@@ -1,14 +1,15 @@
 import express from 'express';
 import { getProducts } from './controllers/products.controllers';
 import { getCategories } from './controllers/categories.controllers';
+import {registerUser} from './controllers/auth.controllers';
 import { protect } from './middleware/auth.middleware';
 import { findUserById } from './models/User';
 
 const router = express.Router();
 
-router.get('/products', getProducts);
+router.get('/products', registerUser);
 router.get('/categories', getCategories);
-// ...
+router.get('/register', registerUser);
 
 // please disregard the lines below
 router.get('/', (req, res) => { return res.json({ message: 'Hello World' }); });

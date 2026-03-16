@@ -5,7 +5,13 @@ import bcrypt from 'bcryptjs';
 import { PlatformUser } from "@enterprise-commerce/core/platform/types"
 import openDb from '../db/db';
 
-export const createUser = () => {} // Implement the createUser function
+export const createUser = async (newUser: PlatformUser): Promise<PlatformUser> => { // Implement the createUser function
+  const db = await openDb();
+  const auth = await db.run(`INSERT INTO users (email, password) VALUES (?, ?)`, [newUser.email, newUser.password]);
+  newUser.id = auth.lastID.toString() || null;
+  await db.close();
+  return newUser;
+};
 
 export const findUserById = async (id: string): Promise<PlatformUser | null> => {
   const db = await openDb();

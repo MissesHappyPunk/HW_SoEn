@@ -2,6 +2,7 @@
   "name": "enterprise-commerce",
   "version": "link",
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "workspaces": [
     "packages/**",
     "apps/**"
@@ -69,7 +70,7 @@
     "ts-jest": "^29.1.2",
     "tsc": "^2.0.4",
     "tsup": "^8.0.2",
-    "turbo": "1.13.0",
+    "turbo": "^2.8.17",
     "typescript": "5.4.3",
     "webpack": "5.91.0"
   },
